@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Physicist</title>
+    <title>Dingleberry - Curious folk</title>
     <style>
         * {
             margin: 0;
@@ -90,12 +90,39 @@
             border: 1px solid rgba(100, 255, 218, 0.2);
             border-radius: 15px;
             padding: 30px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(100, 255, 218, 0.5);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(100, 255, 218, 0.7);
+            box-shadow: 0 15px 35px rgba(100, 255, 218, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .project-card:active {
+            transform: translateY(-6px) scale(1.01);
         }
 
         .project-card h3 {
@@ -159,22 +186,14 @@
         }
 
         .social-link:nth-child(2):hover {
-            background: linear-gradient(135deg, #0077b5, #00a0dc);
-            border-color: #0077b5;
+            background: linear-gradient(135deg, #5865f2, #7289da);
+            border-color: #5865f2;
             color: #ffffff;
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(0, 119, 181, 0.3);
+            box-shadow: 0 12px 25px rgba(88, 101, 242, 0.3);
         }
 
         .social-link:nth-child(3):hover {
-            background: linear-gradient(135deg, #00d4aa, #01b3a7);
-            border-color: #00d4aa;
-            color: #ffffff;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(0, 212, 170, 0.3);
-        }
-
-        .social-link:nth-child(4):hover {
             background: linear-gradient(135deg, #333333, #24292e);
             border-color: #333333;
             color: #ffffff;
@@ -224,32 +243,36 @@
         <section class="section">
             <h2>Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <a href="memory-manager.html" class="project-card">
                     <h3>Dynamic memory manager and diagnostics</h3>
                     <p>Basic C framwork meant to help developers catch or prevent bugs. When used it either substitutes stdlib's memory allocators or it gives a full report on where eventual leaks are happening. As a plus, it has benchmarking functions.</p>
-                </div>
-                <div class="project-card">
+                </a>
+                <a href="sentence-generator.html" class="project-card">
                     <h3>Random sentence generator</h3>
                     <p>Generates a random English sentence. Perhaps not the greatest choice of words...</p>
-                </div>
+                </a>
             </div>
         </section>
 
         <section class="section">
             <h2>Connect</h2>
             <div class="socials">
-                <a href="contact.inquirer648@passinbox.com" class="social-link">
+                <a href="mailto:contact.inquirer648@passinbox.com" class="social-link">
                     <span>📬</span>
                     <span>E-mail</span>
                 </a>
                 <a href="https://discord.gg/85Wt8MH9mx" class="social-link">
                     <span>🗪</span>
-                    <span>Dicord</span>
+                    <span>Discord</span>
                 </a>
                 <a href="https://github.com/dingleberry21" class="social-link">
                     <span>🐙</span>
                     <span>GitHub</span>
                 </a>
+                <a href="https://www.youtube.com/@dingleberry_pi" class="social-link">
+                    <span>📹</span>
+                    <span>YouTube</span>
+                <\a>
             </div>
         </section>
     </div>
