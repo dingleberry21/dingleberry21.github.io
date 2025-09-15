@@ -1,517 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dingleberry - Curious folk</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 80px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .name {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #64ffda, #ffffff, #bb86fc);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 5px rgba(100, 255, 218, 0.3)); }
-            to { filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.6)); }
-        }
-
-        .title {
-            font-size: 1.3rem;
-            color: #a0a0a0;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        .intro {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #e0e0e0;
-        }
-
-        .section {
-            padding: 60px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #64ffda;
-            font-weight: 300;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(100, 255, 218, 0.7);
-            box-shadow: 0 15px 35px rgba(100, 255, 218, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .project-card:active {
-            transform: translateY(-6px) scale(1.01);
-        }
-
-        .project-card h3 {
-            color: #bb86fc;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .project-card p {
-            color: #c0c0c0;
-            line-height: 1.5;
-        }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 30px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            color: #ffffff;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 400;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            min-width: 140px;
-            justify-content: center;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .social-link:hover::before {
-            left: 100%;
-        }
-
-        .social-link:nth-child(1):hover {
-            background: linear-gradient(135deg, #ff6b6b, #ff8787);
-            border-color: #ff6b6b;
-            color: #ffffff;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(255, 107, 107, 0.3);
-        }
-
-        .social-link:nth-child(2):hover {
-            background: linear-gradient(135deg, #5865f2, #7289da);
-            border-color: #5865f2;
-            color: #ffffff;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(88, 101, 242, 0.3);
-        }
-
-        .social-link:nth-child(3):hover {
-            background: linear-gradient(135deg, #333333, #24292e);
-            border-color: #333333;
-            color: #ffffff;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(51, 51, 51, 0.3);
-        }
-
-        /* Particle Canvas */
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        @media (max-width: 768px) {
-            .name {
-                font-size: 2.5rem;
-            }
-            
-            .section h2 {
-                font-size: 2rem;
-            }
-            
-            .socials {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dingleberry - Curious folk</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="particles"></canvas>
-    
-    <div class="container">
-        <header>
-            <h1 class="name">Dingleberry</h1>
-            <p class="title">Curious folk</p>
-            <p class="intro">
-                Exploring what's around me while I'm still around. I study law, mathematics, physics, programming. Sometimes I get caught opening social science books, such as economy or sociology ones. Specialising in national security (for how huge this field is).
-            </p>
-        </header>
+  <canvas id="particles"></canvas>
+  
+  <div class="container">
+    <header>
+      <h1 class="name">Dingleberry</h1>
+      <p class="title">Curious folk</p>
+      <p class="intro">
+        Exploring what's around me while I'm still around. I study law, mathematics, physics, programming. Sometimes I get caught opening social science books, such as economy or sociology ones. Specialising in national security (for how huge this field is).
+      </p>
+    </header>
 
-        <section class="section">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <a href="https://github.com/dingleberry21/DingleberryMemoryManager" class="project-card">
-                    <h3>Dynamic memory manager and diagnostics</h3>
-                    <p>Basic C framwork meant to help developers catch or prevent bugs. When used it either substitutes stdlib's memory allocators or it gives a full report on where eventual leaks are happening. As a plus, it has benchmarking functions.</p>
-                </a>
-                <a href="https://github.com/dingleberry21/RandomSentenceGenerator" class="project-card">
-                    <h3>Random sentence generator</h3>
-                    <p>Generates a random English sentence. Perhaps not the greatest choice of words...</p>
-                </a>
-            </div>
-        </section>
+    <section class="section">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <a href="https://github.com/dingleberry21/DingleberryMemoryManager" class="project-card">
+          <h3>Dynamic memory manager and diagnostics</h3>
+          <p>Basic C framework meant to help developers catch or prevent bugs. When used it either substitutes stdlib's memory allocators or it gives a full report on where eventual leaks are happening. As a plus, it has benchmarking functions.</p>
+        </a>
+        <a href="https://github.com/dingleberry21/RandomSentenceGenerator" class="project-card">
+          <h3>Random sentence generator</h3>
+          <p>Generates a random English sentence. Perhaps not the greatest choice of words...</p>
+        </a>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2>Connect</h2>
-            <div class="socials">
-                <a href="mailto:contact.inquirer648@passinbox.com" class="social-link">
-                    <span>📬</span>
-                    <span>E-mail</span>
-                </a>
-                <a href="https://discord.gg/85Wt8MH9mx" class="social-link">
-                    <span>🗪</span>
-                    <span>Discord</span>
-                </a>
-                <a href="https://github.com/dingleberry21" class="social-link">
-                    <span>🐙</span>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.youtube.com/@dingleberry_pi" class="social-link">
-                    <span>📹</span>
-                    <span>YouTube</span>
-                </a>
-            </div>
-        </section>
-    </div>
+    <section class="section">
+      <h2>Connect</h2>
+      <div class="socials">
+        <a href="mailto:contact.inquirer648@passinbox.com" class="social-link">
+          <span>📬</span>
+          <span>E-mail</span>
+        </a>
+        <a href="https://discord.gg/85Wt8MH9mx" class="social-link">
+          <span>🗪</span>
+          <span>Discord</span>
+        </a>
+        <a href="https://github.com/dingleberry21" class="social-link">
+          <span>🐙</span>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.youtube.com/@dingleberry_pi" class="social-link">
+          <span>📹</span>
+          <span>YouTube</span>
+        </a>
+      </div>
+    </section>
+  </div>
 
-    <script>
-        // Particle system inspired by Feynman diagrams
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        
-        let particles = [];
-        let connections = [];
-        
-        // Resize canvas to full screen
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Particle class representing fundamental particles
-        class Particle {
-            constructor(x, y, type = 'electron') {
-                this.x = x;
-                this.y = y;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.type = type;
-                this.size = Math.random() * 2 + 1;
-                this.life = 1.0;
-                this.decay = Math.random() * 0.005 + 0.002;
-                
-                // Different colors for different particle types
-                switch(type) {
-                    case 'electron':
-                        this.color = '#64ffda';
-                        break;
-                    case 'photon':
-                        this.color = '#ffff00';
-                        this.size *= 1.5;
-                        break;
-                    case 'muon':
-                        this.color = '#bb86fc';
-                        break;
-                    case 'neutrino':
-                        this.color = '#ff6b6b';
-                        this.size *= 0.5;
-                        break;
-                    default:
-                        this.color = '#ffffff';
-                }
-            }
-            
-            update() {
-                // Simulate Brownian motion with slight drift
-                this.x += this.vx + (Math.random() - 0.5) * 0.1;
-                this.y += this.vy + (Math.random() - 0.5) * 0.1;
-                
-                // Decay over time (particle annihilation)
-                this.life -= this.decay;
-                
-                // Wrap around screen edges
-                if (this.x < 0) this.x = canvas.width;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.y < 0) this.y = canvas.height;
-                if (this.y > canvas.height) this.y = 0;
-                
-                // Slight velocity damping
-                this.vx *= 0.99;
-                this.vy *= 0.99;
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.life * 0.8;
-                
-                // Draw particle as a glowing dot
-                ctx.beginPath();
-                ctx.fillStyle = this.color;
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Add glow effect
-                ctx.beginPath();
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.life * 0.3;
-                ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
-                ctx.fill();
-                
-                ctx.restore();
-            }
-        }
-        
-        // Connection class representing force carriers (virtual particles)
-        class Connection {
-            constructor(p1, p2, type = 'electromagnetic') {
-                this.p1 = p1;
-                this.p2 = p2;
-                this.type = type;
-                this.strength = Math.random() * 0.5 + 0.2;
-                this.life = 1.0;
-                this.decay = 0.01;
-                
-                switch(type) {
-                    case 'electromagnetic':
-                        this.color = '#ffff00';
-                        this.width = 1;
-                        break;
-                    case 'weak':
-                        this.color = '#ff6b6b';
-                        this.width = 2;
-                        break;
-                    case 'strong':
-                        this.color = '#00ff00';
-                        this.width = 3;
-                        break;
-                }
-            }
-            
-            update() {
-                this.life -= this.decay;
-                
-                // Apply force between connected particles (simplified)
-                const dx = this.p2.x - this.p1.x;
-                const dy = this.p2.y - this.p1.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance > 0) {
-                    const force = this.strength * 0.001 / (distance * distance);
-                    const fx = (dx / distance) * force;
-                    const fy = (dy / distance) * force;
-                    
-                    this.p1.vx += fx;
-                    this.p1.vy += fy;
-                    this.p2.vx -= fx;
-                    this.p2.vy -= fy;
-                }
-            }
-            
-            draw() {
-                if (this.life <= 0) return;
-                
-                ctx.save();
-                ctx.globalAlpha = this.life * 0.6;
-                ctx.strokeStyle = this.color;
-                ctx.lineWidth = this.width;
-                
-                // Draw wavy line to represent virtual particle exchange
-                ctx.beginPath();
-                ctx.moveTo(this.p1.x, this.p1.y);
-                
-                const midX = (this.p1.x + this.p2.x) / 2;
-                const midY = (this.p1.y + this.p2.y) / 2;
-                const offset = Math.sin(Date.now() * 0.01) * 5;
-                
-                ctx.quadraticCurveTo(midX + offset, midY + offset, this.p2.x, this.p2.y);
-                ctx.stroke();
-                
-                ctx.restore();
-            }
-        }
-        
-        // Initialize particles
-        function initParticles() {
-            particles = [];
-            const particleTypes = ['electron', 'photon', 'muon', 'neutrino'];
-            
-            for (let i = 0; i < 50; i++) {
-                const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
-                particles.push(new Particle(
-                    Math.random() * canvas.width,
-                    Math.random() * canvas.height,
-                    type
-                ));
-            }
-        }
-        
-        // Create connections between nearby particles (simulating interactions)
-        function updateConnections() {
-            connections = connections.filter(conn => conn.life > 0);
-            
-            // Randomly create new connections
-            if (Math.random() < 0.1 && connections.length < 10) {
-                const p1 = particles[Math.floor(Math.random() * particles.length)];
-                const p2 = particles[Math.floor(Math.random() * particles.length)];
-                
-                if (p1 !== p2) {
-                    const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
-                    if (distance < 200) {
-                        const types = ['electromagnetic', 'weak', 'strong'];
-                        const type = types[Math.floor(Math.random() * types.length)];
-                        connections.push(new Connection(p1, p2, type));
-                    }
-                }
-            }
-        }
-        
-        // Animation loop
-        function animate() {
-            // Clear canvas with slight trail effect
-            ctx.fillStyle = 'rgba(15, 15, 15, 0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Update and draw connections
-            connections.forEach(conn => {
-                conn.update();
-                conn.draw();
-            });
-            
-            // Update and draw particles
-            particles.forEach((particle, index) => {
-                particle.update();
-                particle.draw();
-                
-                // Remove dead particles and create new ones
-                if (particle.life <= 0) {
-                    const particleTypes = ['electron', 'photon', 'muon', 'neutrino'];
-                    const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
-                    particles[index] = new Particle(
-                        Math.random() * canvas.width,
-                        Math.random() * canvas.height,
-                        type
-                    );
-                }
-            });
-            
-            updateConnections();
-            requestAnimationFrame(animate);
-        }
-        
-        // Start the simulation
-        initParticles();
-        animate();
-        
-        // Recreate particles on window resize
-        window.addEventListener('resize', () => {
-            initParticles();
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
