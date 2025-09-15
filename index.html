@@ -7,10 +7,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Animated gradient background -->
+  <div class="bg-gradient"></div>
   <canvas id="particles"></canvas>
   
   <div class="container">
-    <header>
+    <header class="parallax">
       <h1 class="name">Dingleberry</h1>
       <p class="title">Curious folk</p>
       <p class="intro">
@@ -18,39 +20,27 @@
       </p>
     </header>
 
-    <section class="section">
+    <section class="section parallax">
       <h2>Projects</h2>
       <div class="projects-grid">
-        <a href="https://github.com/dingleberry21/DingleberryMemoryManager" class="project-card">
+        <a href="https://github.com/dingleberry21/DingleberryMemoryManager" class="project-card fade-in">
           <h3>Dynamic memory manager and diagnostics</h3>
           <p>Basic C framework meant to help developers catch or prevent bugs. When used it either substitutes stdlib's memory allocators or it gives a full report on where eventual leaks are happening. As a plus, it has benchmarking functions.</p>
         </a>
-        <a href="https://github.com/dingleberry21/RandomSentenceGenerator" class="project-card">
+        <a href="https://github.com/dingleberry21/RandomSentenceGenerator" class="project-card fade-in">
           <h3>Random sentence generator</h3>
           <p>Generates a random English sentence. Perhaps not the greatest choice of words...</p>
         </a>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section parallax">
       <h2>Connect</h2>
-      <div class="socials">
-        <a href="mailto:contact.inquirer648@passinbox.com" class="social-link">
-          <span>📬</span>
-          <span>E-mail</span>
-        </a>
-        <a href="https://discord.gg/85Wt8MH9mx" class="social-link">
-          <span>🗪</span>
-          <span>Discord</span>
-        </a>
-        <a href="https://github.com/dingleberry21" class="social-link">
-          <span>🐙</span>
-          <span>GitHub</span>
-        </a>
-        <a href="https://www.youtube.com/@dingleberry_pi" class="social-link">
-          <span>📹</span>
-          <span>YouTube</span>
-        </a>
+      <div class="socials fade-in">
+        <a href="mailto:contact.inquirer648@passinbox.com" class="social-link">📬 E-mail</a>
+        <a href="https://discord.gg/85Wt8MH9mx" class="social-link">🗪 Discord</a>
+        <a href="https://github.com/dingleberry21" class="social-link">🐙 GitHub</a>
+        <a href="https://www.youtube.com/@dingleberry_pi" class="social-link">📹 YouTube</a>
       </div>
     </section>
   </div>
